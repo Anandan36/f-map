@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Flavour Map</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="icon" href="/assets/images/flavour-map-logo.svg" type="image/svg+xml">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="/assets/images/flavour-map-logo.svg" alt="Flavour Map Logo" class="logo">
+                <h1 class="logo-text">Flavour Map</h1>
+            </div>
+            <nav>
+                <ul id="main-nav">
+                    <!-- Navigation will be added by firebase-config.js -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>Create Your Account</h2>
+                <p>Join our community of food enthusiasts</p>
+            </div>
+            
+            <div id="error-message" class="error-message"></div>
+            
+            <form id="register-form" class="auth-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <div class="input-with-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="form-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <input type="text" id="name" name="name" placeholder="Your full name" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-with-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="form-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <input type="email" id="email" name="email" placeholder="Your email address" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-with-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="form-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        <input type="password" id="password" name="password" placeholder="Choose a password (min 6 characters)" required minlength="6">
+                    </div>
+                    <div class="password-strength" id="password-strength">
+                        <div class="strength-meter">
+                            <div class="strength-bar" id="strength-bar"></div>
+                        </div>
+                        <span class="strength-text" id="strength-text">Password strength</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <div class="input-with-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="form-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                    </div>
+                </div>
+                
+                <button type="submit" id="register-button" class="auth-button">Create Account</button>
+            </form>
+            
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html">Login</a></p>
+            </div>
+        </div>
+        
+        <div class="auth-info">
+            <div class="info-content">
+                <h2>Benefits of Joining</h2>
+                <ul class="feature-list">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <span>Save your favorite restaurants</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span>Connect with food enthusiasts</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <span>Personalized food recommendations</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <span>Track your dining history</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Flavour Map - Your Culinary Guide</p>
+    </footer>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script src="../auth/firebase-config.js"></script>
+    <script src="auth.js"></script>
+    
+    <!-- Password strength meter script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const passwordInput = document.getElementById('password');
+            const strengthBar = document.getElementById('strength-bar');
+            const strengthText = document.getElementById('strength-text');
+            
+            if (passwordInput && strengthBar && strengthText) {
+                passwordInput.addEventListener('input', updateStrength);
+                
+                function updateStrength() {
+                    const password = passwordInput.value;
+                    let strength = 0;
+                    let message = '';
+                    
+                    // Length check
+                    if (password.length >= 8) {
+                        strength += 25;
+                    } else if (password.length >= 6) {
+                        strength += 10;
+                    }
+                    
+                    // Character variety checks
+                    if (password.match(/[a-z]+/)) {
+                        strength += 15;
+                    }
+                    
+                    if (password.match(/[A-Z]+/)) {
+                        strength += 20;
+                    }
+                    
+                    if (password.match(/[0-9]+/)) {
+                        strength += 20;
+                    }
+                    
+                    if (password.match(/[^a-zA-Z0-9]+/)) {
+                        strength += 20;
+                    }
+                    
+                    // Set color and message based on strength
+                    let barColor = '';
+                    
+                    if (password.length === 0) {
+                        barColor = '#ddd';
+                        message = 'Password strength';
+                        strength = 0;
+                    } else if (strength < 30) {
+                        barColor = '#f44336';
+                        message = 'Weak password';
+                    } else if (strength < 60) {
+                        barColor = '#ffa726';
+                        message = 'Moderate password';
+                    } else if (strength < 80) {
+                        barColor = '#66bb6a';
+                        message = 'Strong password';
+                    } else {
+                        barColor = '#43a047';
+                        message = 'Very strong password';
+                    }
+                    
+                    // Update UI
+                    strengthBar.style.width = `${strength}%`;
+                    strengthBar.style.backgroundColor = barColor;
+                    strengthText.textContent = message;
+                    strengthText.style.color = barColor;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,479 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pacifico&display=swap");
+
+:root {
+  --primary-color: #ff6347;
+  --primary-light: #ff8066;
+  --primary-dark: #e54b32;
+  --accent-color: #4CAF50;
+  --text-color: #333333;
+  --text-light: #666666;
+  --text-lighter: #999999;
+  --bg-color: #f9f7f4;
+  --bg-light: #ffffff;
+  --bg-dark: #ece8e2;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+header {
+  background-color: var(--bg-light);
+  color: var(--text-color);
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  font-family: 'Pacifico', cursive;
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+footer {
+  background-color: var(--bg-light);
+  color: var(--text-color);
+  text-align: center;
+  padding: 1.5rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Navigation styles */
+nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin: 0 5px;
+}
+
+nav a {
+  display: block;
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+nav a:hover, nav a.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Main Styles */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.hero-section {
+  text-align: center;
+  max-width: 800px;
+  margin: 2rem auto 4rem;
+}
+
+.hero-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.hero-section p {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 3rem;
+  background-color: var(--bg-light);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.search-title {
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.search-form {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+#search-input {
+  font-family: "Poppins", sans-serif;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  width: 100%;
+  border: 2px solid var(--bg-dark);
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#search-input:focus {
+  border-color: var(--primary-light);
+}
+
+#find-restaurants {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-left: 1rem;
+  box-shadow: 0 4px 8px rgba(255, 99, 71, 0.2);
+}
+
+#find-restaurants:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.or-divider {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  max-width: 500px;
+  margin: 1.5rem 0;
+}
+
+.divider-line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--bg-dark);
+}
+
+.or-text {
+  padding: 0 1rem;
+  color: var(--text-lighter);
+  font-size: 0.9rem;
+}
+
+.use-location-btn {
+  font-family: "Poppins", sans-serif;
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: var(--radius);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.use-location-btn svg {
+  margin-right: 8px;
+}
+
+.use-location-btn:hover {
+  background-color: rgba(255, 99, 71, 0.1);
+}
+
+.results-title {
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+/* Restaurant Container - Modified to use Grid with 2 columns */
+#restaurants {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns of equal width */
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Restaurant Card Styles */
+.restaurant-card {
+  background-color: var(--bg-light);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.restaurant-card .restaurant-image {
+  width: 100%;
+  height: 200px;
+  background-color: var(--bg-dark);
+  background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&w=1000&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.restaurant-info {
+  padding: 1.5rem;
+}
+
+.restaurant-card h2 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-color);
+  font-size: 1.3rem;
+}
+
+.restaurant-card p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+
+.restaurant-distance {
+  font-weight: 600;
+  color: var(--accent-color) !important;
+  display: flex;
+  align-items: center;
+  margin-top: 0.75rem !important;
+}
+
+.restaurant-distance::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.restaurant-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bg-dark);
+}
+
+.view-map-btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.view-map-btn svg {
+  margin-right: 6px;
+}
+
+.view-map-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.favorite-btn {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  color: var(--text-light);
+  border: 1px solid var(--bg-dark);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin: 0;
+}
+
+.favorite-btn:hover {
+  background-color: rgba(255, 99, 71, 0.08);
+  border-color: var(--primary-light);
+  color: var(--primary-color);
+}
+
+.favorite-btn.active {
+  background-color: rgba(255, 99, 71, 0.12);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.heart-icon {
+  margin-right: 6px;
+  font-size: 1.1rem;
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  width: 100%;
+  background-color: var(--bg-light);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 99, 71, 0.2);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error message */
+.error-message {
+  text-align: center;
+  padding: 3rem 2rem;
+  background-color: var(--bg-light);
+  border-radius: var(--radius);
+  width: 100%;
+  box-shadow: var(--shadow);
+  border-left: 4px solid #f44336;
+}
+
+.error-message h2 {
+  color: #f44336;
+  margin-bottom: 1rem;
+}
+
+.error-message p {
+  color: var(--text-light);
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+  #restaurants {
+    grid-template-columns: 1fr; /* One column on smaller screens */
+  }
+  
+  .search-form {
+    flex-direction: column;
+  }
+  
+  #search-input {
+    margin-bottom: 1rem;
+  }
+  
+  #find-restaurants {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .header-content {
+    flex-direction: column;
+  }
+  
+  nav ul {
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-container {
+    padding: 1.5rem;
+  }
+  
+  .hero-section h2 {
+    font-size: 2rem;
+  }
+  
+  .hero-section p {
+    font-size: 1rem;
+  }
+  
+  .logo-text {
+    font-size: 1.5rem;
+  }
+  
+  nav li {
+    margin: 0.25rem;
+  }
+}

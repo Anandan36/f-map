@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Flavour Map</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+    /* Profile Page Styles */
+    .profile-container {
+        display: flex;
+        max-width: 1200px;
+        margin: 2rem auto;
+        background-color: #1f1f1f;
+        border-radius: 10px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+    }
+
+    /* Sidebar Styles */
+    .profile-sidebar {
+        width: 280px;
+        background-color: #252525;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-avatar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .profile-avatar img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #ff6347;
+        margin-bottom: 1rem;
+    }
+
+    .user-info {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .user-info h3 {
+        margin: 0;
+        color: #ffffff;
+        font-size: 1.5rem;
+    }
+
+    .user-info p {
+        color: #cccccc;
+        margin: 0.5rem 0 0;
+    }
+
+    .profile-nav {
+        list-style: none;
+        padding: 0;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .profile-nav li {
+        margin-bottom: 0.5rem;
+    }
+
+    .profile-nav a {
+        display: block;
+        padding: 0.75rem 1rem;
+        color: #cccccc;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .profile-nav a:hover {
+        background-color: rgba(255, 99, 71, 0.1);
+        color: #ff6347;
+    }
+
+    .profile-nav a.active {
+        background-color: #ff6347;
+        color: #ffffff;
+    }
+
+    /* Content Styles */
+    .profile-content {
+        flex: 1;
+        padding: 2rem;
+    }
+
+    .profile-section {
+        display: block;
+    }
+
+    .profile-section.hidden {
+        display: none;
+    }
+
+    .profile-section h2 {
+        color: #ff6347;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #333;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #cccccc;
+    }
+
+    .form-group input {
+        font-family: "Merienda", cursive;
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #333;
+        border-radius: 5px;
+        background-color: #2d2d2d;
+        color: #ffffff;
+        font-size: 1rem;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: #ff6347;
+        box-shadow: 0 0 0 2px rgba(255, 99, 71, 0.3);
+    }
+
+    .profile-button {
+        background-color: #ff6347;
+        color: #fff;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        border-radius: 5px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: "Merienda", cursive;
+    }
+
+    .profile-button:hover {
+        background-color: #ff4500;
+        transform: scale(1.05);
+    }
+
+    .small-button {
+        background-color: rgba(255, 99, 71, 0.2);
+        color: #ff6347;
+        border: 1px solid #ff6347;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 4px;
+        font-family: "Merienda", cursive;
+    }
+
+    .small-button:hover {
+        background-color: rgba(255, 99, 71, 0.3);
+    }
+
+    .password-section {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #333;
+    }
+
+    .password-section h3 {
+        color: #ff6347;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Preferences Section */
+    .preferences-group {
+        margin-bottom: 2rem;
+    }
+
+    .preferences-group h3 {
+        color: #cccccc;
+        margin-bottom: 1rem;
+    }
+
+    .preferences-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+
+    .preference-item {
+        display: flex;
+        align-items: center;
+        background-color: #252525;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+        position: relative;
+    }
+
+    .preference-item:hover {
+        background-color: #333;
+        border-color: rgba(255, 99, 71, 0.3);
+    }
+
+    .preference-item input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    .preference-item label {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        cursor: pointer;
+        width: 100%;
+        color: #cccccc;
+    }
+
+    .preference-item label::before {
+        content: '';
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+        border: 2px solid #555;
+        border-radius: 3px;
+        background-color: transparent;
+        transition: all 0.3s ease;
+    }
+
+    .preference-item input:checked + label {
+        color: #ff6347;
+    }
+
+    .preference-item input:checked + label::before {
+        background-color: #ff6347;
+        border-color: #ff6347;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='18px' height='18px'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+        background-size: 14px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* Favorites Grid */
+    .favorites-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .favorite-card {
+        background-color: #252525;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+
+    .favorite-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .favorite-info {
+        padding: 1rem;
+    }
+
+    .favorite-info h3 {
+        margin: 0;
+        color: #ff6347;
+        font-size: 1.25rem;
+    }
+
+    .favorite-info p {
+        color: #cccccc;
+        margin: 0.5rem 0;
+        font-size: 0.875rem;
+    }
+
+    .favorite-actions {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+        border-top: 1px solid #333;
+    }
+
+    .favorite-actions button {
+        background: none;
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+        font-family: "Merienda", cursive;
+        font-size: 0.875rem;
+        transition: color 0.3s ease;
+    }
+
+    .favorite-actions .view-btn {
+        color: #ff6347;
+    }
+
+    .favorite-actions .remove-btn {
+        color: #ff4d4d;
+    }
+
+    .favorite-actions button:hover {
+        opacity: 0.8;
+    }
+
+    /* History List */
+    .history-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 1rem;
+    }
+
+    .history-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .history-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #252525;
+        padding: 1rem;
+        border-radius: 5px;
+    }
+
+    .history-details {
+        flex: 1;
+    }
+
+    .history-details h3 {
+        margin: 0;
+        color: #cccccc;
+        font-size: 1.125rem;
+    }
+
+    .history-details p {
+        color: #999;
+        margin: 0.25rem 0 0;
+        font-size: 0.875rem;
+    }
+
+    .history-actions button {
+        background: none;
+        border: none;
+        color: #ff6347;
+        cursor: pointer;
+        font-size: 0.875rem;
+    }
+
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: 2rem;
+        background-color: #252525;
+        border-radius: 8px;
+    }
+
+    .empty-state p {
+        color: #999;
+        margin: 0.5rem 0;
+    }
+
+    /* Loading Spinner */
+    .loading {
+        text-align: center;
+        padding: 2rem;
+        color: #cccccc;
+    }
+    
+    .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(255, 99, 71, 0.2);
+        border-top: 4px solid #ff6347;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Toast Notifications */
+    .toast-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+    
+    .toast {
+        padding: 12px 20px;
+        margin-top: 10px;
+        background-color: #ff6347;
+        color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        transform: translateX(120%);
+        transition: transform 0.3s ease;
+        max-width: 300px;
+        font-family: 'Merienda', cursive;
+    }
+    
+    .toast.show {
+        transform: translateX(0);
+    }
+    
+    .toast.error {
+        background-color: #ff4d4d;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 900px) {
+        .profile-container {
+            flex-direction: column;
+        }
+        
+        .profile-sidebar {
+            width: 100%;
+            padding: 1.5rem;
+        }
+        
+        .profile-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .profile-nav li {
+            margin-bottom: 0;
+        }
+        
+        .profile-nav a {
+            padding: 0.5rem 1rem;
+        }
+        
+        .favorites-grid {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+        
+        .preferences-list {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+    }
+
+    @media (max-width: 600px) {
+        .profile-content {
+            padding: 1.5rem;
+        }
+        
+        .favorites-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .preferences-list {
+            grid-template-columns: 1fr;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Flavour Map</h1>
+        <nav>
+            <ul id="main-nav">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="profile.html" class="active">Profile</a></li>
+                <li><a href="../chatbot/chatbot.html">Chat Assistant</a></li>
+                <li><a href="#" id="logout-link">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="profile-container">
+        <aside class="profile-sidebar">
+            <div class="profile-avatar">
+                <img id="profile-image" src="../assets/images/invisibletom.jpg" alt="Profile Avatar">
+                <button id="change-avatar-btn" class="small-button">Change Photo</button>
+                <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
+            </div>
+            <div class="user-info">
+                <h3 id="user-name">Loading...</h3>
+                <p id="user-email">loading@example.com</p>
+            </div>
+            <ul class="profile-nav">
+                <li><a href="#" class="active" data-section="personal-info">Personal Information</a></li>
+                <li><a href="#" data-section="preferences">Food Preferences</a></li>
+                <li><a href="#" data-section="favorites">Favorite Restaurants</a></li>
+                <li><a href="#" data-section="history">Search History</a></li>
+            </ul>
+        </aside>
+        
+        <div class="profile-content">
+            <!-- Personal Information Section -->
+            <section id="personal-info" class="profile-section">
+                <h2>Personal Information</h2>
+                <form id="personal-info-form">
+                    <div class="form-group">
+                        <label for="display-name">Full Name</label>
+                        <input type="text" id="display-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Default Location</label>
+                        <input type="text" id="location">
+                    </div>
+                    <button type="submit" class="profile-button">Save Changes</button>
+                </form>
+                
+                <div class="password-section">
+                    <h3>Change Password</h3>
+                    <form id="password-form">
+                        <div class="form-group">
+                            <label for="current-password">Current Password</label>
+                            <input type="password" id="current-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-new-password">Confirm New Password</label>
+                            <input type="password" id="confirm-new-password" required>
+                        </div>
+                        <button type="submit" class="profile-button">Update Password</button>
+                    </form>
+                </div>
+            </section>
+            
+            <!-- Food Preferences Section -->
+            <section id="preferences" class="profile-section hidden">
+                <h2>Food Preferences</h2>
+                <form id="preferences-form">
+                    <div class="preferences-group">
+                        <h3>Favorite Cuisines</h3>
+                        <div class="preferences-list" id="cuisine-preferences">
+                            <div class="preference-item">
+                                <input type="checkbox" id="cuisine-italian" value="Italian">
+                                <label for="cuisine-italian">Italian</label>
+                            </div>
+                            <div class="preference-item">
+                                <input type="checkbox" id="cuisine-chinese" value="Chinese">
+                                <label for="cuisine-chinese">Chinese</label>
+                            </div>
+                            <div class="preference-item">
+                                <input type="checkbox" id="cuisine-mexican" value="Mexican">
+                                <label for="cuisine-mexican">Mexican</label>
+                            </div>
+                            <div class="preference-item">
+                                <input type="checkbox" id="cuisine-indian" value="Indian">
+                                <label for="cuisine-indian">Indian</label>
+                            </div>
+                            <div class="preference-item">
+                                <input type="checkbox" id="cuisine-japanese" value="Japanese">
+                                <label for="cuisine-japanese">Japanese</label>
+                            </div>
+                            <div class="preference-item">
+                                <input type="checkbox" id="cuisine-thai" value="Thai">
+                                <label for="cuisine-thai">Thai</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="preferences-group">
+                        <h3>Dietary Restrictions</h3>
+                        <div class="preferences-list" id="dietary-restrictions">
+                            <div class="preference-item">
+                                <input type="checkbox" id="diet-vegetarian" value="Vegetarian">
+                                <label for="diet-vegetarian">Vegetarian</label>
+                            </div>
+                            <div class="preference-item">
+                                <input type="checkbox" id="diet-vegan" value="Vegan">
+                                <label for="diet-vegan">Vegan</label>
+                            </div>
+                            <div class="preference-item">
+                                <input type="checkbox" id="diet-gluten-free" value="Gluten-Free">
+                                <label for="diet-gluten-free">Gluten-Free</label>
+                            </div>
+                            <div class="preference-item">
+                                <input type="checkbox" id="diet-dairy-free" value="Dairy-Free">
+                                <label for="diet-dairy-free">Dairy-Free</label>
+                            </div>
+                            <div class="preference-item">
+                                <input type="checkbox" id="diet-nut-free" value="Nut-Free">
+                                <label for="diet-nut-free">Nut-Free</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="profile-button">Save Preferences</button>
+                </form>
+            </section>
+            
+            <!-- Favorite Restaurants Section -->
+            <section id="favorites" class="profile-section hidden">
+                <h2>Favorite Restaurants</h2>
+                <div id="favorite-restaurants" class="favorites-grid">
+                    <!-- Favorites will be added dynamically -->
+                </div>
+            </section>
+            
+            <!-- Search History Section -->
+            <section id="history" class="profile-section hidden">
+                <h2>Search History</h2>
+                <div class="history-actions">
+                    <button id="clear-history-btn" class="small-button">Clear History</button>
+                </div>
+                <div id="search-history" class="history-list">
+                    <!-- History items will be added dynamically -->
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Flavour Map - Your Culinary Guide</p>
+    </footer>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script src="../auth/firebase-config.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>

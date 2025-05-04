@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Assistant - Flavour Map</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="icon" href="/assets/images/flavour-map-logo.svg" type="image/svg+xml">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="/assets/images/flavour-map-logo.svg" alt="Flavour Map Logo" class="logo">
+                <h1 class="logo-text">Flavour Map</h1>
+            </div>
+            <nav>
+                <ul id="main-nav">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../profile/profile.html">Profile</a></li>
+                    <li><a href="chatbot.html" class="active">Chat Assistant</a></li>
+                    <li><a href="#" id="logout-link">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="chat-container">
+        <div class="chat-sidebar">
+            <div class="chat-header">
+                <div class="assistant-avatar">
+                    <img src="../assets/images/cute.jpg" alt="Chat Assistant">
+                </div>
+                <div class="assistant-info">
+                    <h2>Food Assistant</h2>
+                    <p>Ask me anything about restaurants, cuisines, or dishes!</p>
+                </div>
+            </div>
+            
+            <div class="suggestion-container">
+                <h3>Try asking:</h3>
+                <div class="suggestion-list">
+                    <button class="suggestion-item" data-query="What's the best Italian food?">
+                        <span class="suggestion-icon">🍝</span>
+                        <span>What's the best Italian food?</span>
+                    </button>
+                    <button class="suggestion-item" data-query="What should I order at a Thai restaurant?">
+                        <span class="suggestion-icon">🍜</span>
+                        <span>What should I order at a Thai restaurant?</span>
+                    </button>
+                    <button class="suggestion-item" data-query="Recommend vegetarian restaurants">
+                        <span class="suggestion-icon">🥗</span>
+                        <span>Recommend vegetarian restaurants</span>
+                    </button>
+                    <button class="suggestion-item" data-query="What's a good dessert for a date night?">
+                        <span class="suggestion-icon">🍰</span>
+                        <span>What's a good dessert for a date night?</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="chat-features">
+                <h3>Features</h3>
+                <ul class="features-list">
+                    <li>
+                        <span class="feature-icon">🔍</span>
+                        <span>Recipe recommendations</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">🍽️</span>
+                        <span>Restaurant suggestions</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">🥘</span>
+                        <span>Cuisine information</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">🍳</span>
+                        <span>Cooking tips</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="chat-main">
+            <div class="messages-container" id="messages-container">
+                <div class="message bot-message">
+                    <div class="message-avatar">
+                        <img src="../assets/images/cute.jpg" alt="Bot">
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! I'm your Flavour Map assistant. How can I help you find delicious food today?</p>
+                    </div>
+                </div>
+                
+                <!-- Messages will be added here dynamically -->
+            </div>
+            
+            <div class="input-container">
+                <form id="chat-form">
+                    <div class="input-wrapper">
+                        <input type="text" id="user-input" placeholder="Type your food question..." autocomplete="off">
+                        <button type="submit" id="send-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Flavour Map - Your Culinary Guide</p>
+    </footer>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script src="../auth/firebase-config.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html>
